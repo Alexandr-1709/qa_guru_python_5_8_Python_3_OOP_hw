@@ -18,10 +18,8 @@ class Product:
         TODO Верните True если количество продукта больше или равно запрашиваемому
             и False в обратном случае
         """
-        if self.quantity >= quantity:
-            return True
-        else:
-            raise NotImplementedError('Количество товара меньше запрашиваемого')
+        return self.quantity >= quantity
+
 
     def buy(self, quantity):
         """
@@ -60,7 +58,7 @@ class Cart:
             self.products[product] += buy_count
         else:
             self.products[product] = buy_count
-        # raise NotImplementedError
+
 
     def remove_product(self, product: Product, remove_count=None):
         """
@@ -69,7 +67,7 @@ class Cart:
         Если remove_count больше, чем количество продуктов в позиции, то удаляется вся позиция
         """
         if remove_count is None or remove_count > self.products[product]:
-            self.products[product] = 0
+            del self.products[product]
         else:
             self.products[product] -= remove_count
         # raise NotImplementedError
@@ -83,7 +81,7 @@ class Cart:
         for product, quantity in self.products.items():
             total_price += product.price * quantity
         return total_price
-        # raise NotImplementedError
+
 
     def buy(self):
         """
