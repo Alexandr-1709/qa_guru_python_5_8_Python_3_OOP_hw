@@ -91,23 +91,3 @@ class Cart:
                 product.buy(quantity)
         self.clear()
 
-
-if __name__ == '__main__':
-    p1 = Product('мясо', 123.00, 'говядина', 10)
-    p2 = Product('хлеб', 34.00, 'батон', 10)
-    p3 = Product('крупа', 90.00, 'гречка', 10)
-    p4 = Product('сок', 200.00, 'яблочный', 10)
-    res = p1.check_quantity(1)
-    print(res)
-    # p1.buy(2)
-    print(p1.quantity)
-    cart1 = Cart()
-    cart1.add_product(p1, 1)
-    cart1.add_product(p2, 2)
-    cart1.add_product(p3, 3)
-    cart1.add_product(p4, 4)
-    print(cart1.get_total_price())
-    cart1.remove_product(p2, 1)
-    print(cart1.get_total_price())
-    cart1.buy()
-    print(p1.quantity, p2.quantity, p3.quantity, p4.quantity)
