@@ -16,7 +16,10 @@ class Product:
         TODO Верните True если количество продукта больше или равно запрашиваемому
             и False в обратном случае
         """
-        return self.quantity >= quantity
+        if quantity >= 0:
+            return self.quantity >= quantity
+        else:
+            raise ValueError('Количество продукта не может быть отрицательным')
 
     def buy(self, quantity):
         """
@@ -90,4 +93,3 @@ class Cart:
             else:
                 product.buy(quantity)
         self.clear()
-

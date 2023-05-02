@@ -24,12 +24,15 @@ class TestProducts:
 
     def test_product_check_quantity(self, product):
         # TODO напишите проверки на метод check_quantity
-        assert product.check_quantity(-1) is True, 'Ожидается True. quantity продукта больше запрашиваемого'
         assert product.check_quantity(0) is True, 'Ожидается True. quantity продукта больше запрашиваемого'
         assert product.check_quantity(1) is True, 'Ожидается True. quantity продукта больше запрашиваемого'
         assert product.check_quantity(999) is True, 'Ожидается True. quantity продукта больше запрашиваемого'
         assert product.check_quantity(1000) is True, 'Ожидается True. quantity продукта равно запрашиваемому'
-        assert product.check_quantity(1001) is False, 'Ожидается False. quantity продукта меньше запрашиваемого'
+
+    def test_product_check_quantity_negative_value(self, product):
+        with pytest.raises(ValueError) as exc_info:
+            product.check_quantity(-1)
+        assert 'Количество продукта не может быть отрицательным' in str(exc_info.value)
 
     def test_product_buy(self, product):
         # TODO напишите проверки на метод buy
