@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class Product:
     """
     Класс продукта
@@ -7,19 +11,12 @@ class Product:
     description: str
     quantity: int
 
-    def __init__(self, name, price, description, quantity):
-        self.name = name
-        self.price = price
-        self.description = description
-        self.quantity = quantity
-
     def check_quantity(self, quantity) -> bool:
         """
         TODO Верните True если количество продукта больше или равно запрашиваемому
             и False в обратном случае
         """
         return self.quantity >= quantity
-
 
     def buy(self, quantity):
         """
@@ -59,7 +56,6 @@ class Cart:
         else:
             self.products[product] = buy_count
 
-
     def remove_product(self, product: Product, remove_count=None):
         """
         Метод удаления продукта из корзины.
@@ -82,7 +78,6 @@ class Cart:
             total_price += product.price * quantity
         return total_price
 
-
     def buy(self):
         """
         Метод покупки.
@@ -104,7 +99,7 @@ if __name__ == '__main__':
     p4 = Product('сок', 200.00, 'яблочный', 10)
     res = p1.check_quantity(1)
     print(res)
-    #p1.buy(2)
+    # p1.buy(2)
     print(p1.quantity)
     cart1 = Cart()
     cart1.add_product(p1, 1)
@@ -116,5 +111,3 @@ if __name__ == '__main__':
     print(cart1.get_total_price())
     cart1.buy()
     print(p1.quantity, p2.quantity, p3.quantity, p4.quantity)
-
-
